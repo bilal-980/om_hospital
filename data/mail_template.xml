@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <!-- Mail template are declared in a NOUPDATE block
+         so users can freely customize/delete them -->
+    <data noupdate="1">
+        <!--Email template -->
+        <record id="mail_template_patient_card" model="mail.template">
+            <field name="name">Patient: Send by email</field>
+            <field name="model_id" ref="om_hospital.model_hospital_patient"/>
+            <field name="email_from">${object.email|safe}</field>
+            <field name="email_to">${object.user_email_id.email_formatted}</field>
+            <field name="subject"> Patient Card ${object.name} </field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+            Dear
+            % if object.name:
+                ${object.name} ,
+            % endif
+                        <br />
+                        <br />
+            Here is your
+            Patient Card
+            
+                    </p>
+                </div>
+            </field>
+            <field name="report_template" ref="action_report_patient_card"/>
+            <field name="report_name">Patient Card</field>
+            
+        </record>
+    </data>
+
+</odoo>

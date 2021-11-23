@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  
+    <template id="create_patient">
+        <t t-call="website.layout">
+            <t t-set="title">Patients</t>
+            <div class="oe_structure">
+                <div class="container">
+                    <t t-foreach="patients" t-as="patient">
+                        <p><t t-esc="patient.name"/> <t t-esc="patient.age"/></p>
+                    </t>
+                </div>
+        </t>
+    </template>
+
+    
+</odoo>
